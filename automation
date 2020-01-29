@@ -1,0 +1,103 @@
+package ru.deliveryClub;
+import  org.openqa.selenium.Keys;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.deliveryClub.page.WebDriverSetings;
+import sun.awt.image.ImageWatched;
+
+public class Login {
+
+    @Test
+    public void FirstTest() {
+
+
+        System.setProperty("webdriver.chrome.driver", "/E:/Downloads/chromedriver.exe");
+
+        ChromeDriver driver = new ChromeDriver();
+
+
+        driver.get("https://www.opencart.com/");
+        driver.getTitle();
+        System.out.println(driver.getTitle());
+
+        driver.get("https://www.opencart.com/index.php?route=account/register");
+
+
+        WebElement username = driver.findElementByName("username");
+        username.sendKeys("Ecaterina");
+        WebElement FirstName = driver.findElementByName("firstname");
+        FirstName.sendKeys("Ecaterina");
+        WebElement LastName = driver.findElementByName("lastname");
+        LastName.sendKeys("Hilea");
+
+
+        WebElement email = driver.findElementByName("email");
+        email.sendKeys("Ecaterinah@mal.ru");
+        WebElement password = driver.findElementByName("password");
+        password.sendKeys("131619wk");
+
+
+        driver.get("https://www.opencart.com/index.php?route=account/login");
+        WebElement email1 = driver.findElementById("input-email");
+        email1.sendKeys("Ecaterinah@mail.ru");
+        WebElement password1 = driver.findElementByName("password");
+        password1.sendKeys("131619w");
+        WebElement buton = driver.findElementByCssSelector("#account-login > div.container > div > div:nth-child(1) > form > div.row > div:nth-child(1) > button.btn.btn-primary.btn-lg.hidden-xs");
+        buton.click();
+        WebElement pin = driver.findElementByName("pin");
+        pin.sendKeys("1316");
+        WebElement Continue = driver.findElementByCssSelector("#account-security > div.container > div > div.col-md-8 > form > div:nth-child(2) > button");
+        Continue.click();
+
+    }
+
+
+    @Test
+    public void SecondTest() {
+        System.setProperty("webdriver.chrome.driver", "/E:/Downloads/chromedriver.exe");
+
+
+        ChromeDriver driver = new ChromeDriver();
+
+
+        driver.get("https://www.opencart.com/");
+        driver.getTitle();
+        System.out.println(driver.getTitle());
+
+        driver.get("https://www.opencart.com/index.php?route=account/register");
+
+        driver.get("https://www.opencart.com/index.php?route=account/login");
+        WebElement email1 = driver.findElementById("input-email");
+        email1.sendKeys("Ecaterinah@mail.ru");
+        WebElement password1 = driver.findElementByName("password");
+        password1.sendKeys("131619");
+        WebElement buton = driver.findElementByCssSelector("#account-login > div.container > div > div:nth-child(1) > form > div.row > div:nth-child(1) > button.btn.btn-primary.btn-lg.hidden-xs");
+        buton.click();
+
+
+        String expectedPage = ("https://www.opencart.com/index.php?route=account/security&member_token=d4VcNSpJo85YDX8v7w5Iol3wDUBFaSi2");
+        Assert.assertEquals(expectedPage, driver.getCurrentUrl());
+        System.out.println("CurrentUtl:" + driver.getCurrentUrl());
+        System.out.println("ActualUtl" + driver.getCurrentUrl());
+
+
+    }
+}
+
+
+
+
+
+
+
