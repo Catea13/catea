@@ -1,0 +1,162 @@
+mport org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.FindBy;
+import pages.AbstractPage;
+
+
+
+public class Login {
+@Before
+
+    @Test
+
+    public void tesrmethod() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        ChromeDriver driver = new ChromeDriver();
+
+        driver.get("https://www.airmoldova.md/");
+        WebElement login = driver.findElementByXPath(".//a[text()='Login']");
+        login.click();
+        WebElement s = driver.findElementByXPath("//*[@id='login']");
+        s.click();
+        WebElement username = driver.findElementByXPath("//*[@id='emailLogin']");
+        username.sendKeys("Ecaterinah@mail.ru");
+        WebElement FirstName = driver.findElementByXPath("//*[@id='passwordLogin']");
+        FirstName.sendKeys("131619w");
+        WebElement buton = driver.findElementByXPath("//*[@id='login-box']/form/button");
+        buton.click();
+
+        driver.get("https://www.airmoldova.md/");
+
+
+        driver.getTitle();
+        System.out.println("title is" + driver.getTitle());
+
+
+        driver.get("https://www.airmoldova.md/index/search-reserve");
+
+        WebElement href1 = driver.findElementByXPath("/html/body/div[1]/div/div/div[2]/main/section/div/div/div/form/article/div[1]/div[2]/input ");
+        href1.sendKeys("1");
+
+        WebElement href2 = driver.findElementByXPath("/html/body/div[1]/div/div/div[2]/main/section/div/div/div/form/article/div[2]/div[2]/input");
+        href2.sendKeys("H");
+        WebElement buton3 = driver.findElementByXPath("/html/body/div[1]/div/div/div[2]/main/section/div/div/div/form/footer/button");
+        buton3.click();
+        driver.get("https://www.airmoldova.md/index/my-bookings");
+        driver.get("https://www.airmoldova.md/index/flight-booking");
+        driver.get("https://www.airmoldova.md/index/my-profile");
+        driver.get("https://www.airmoldova.md/index/login");
+
+        WebElement email = driver.findElementById("email");
+        email.sendKeys("Ecaterinah@mail.ru");
+
+        WebElement parola = driver.findElementById("password");
+        parola.sendKeys("1319w");
+
+        WebElement Log = driver.findElementById("hamburger");
+        Log.click();
+
+        String expectedPage = ("https://www.airmoldova.md/index/login");
+        Assert.assertEquals(expectedPage, driver.getCurrentUrl());
+        System.out.println("CurrentUtl:" + driver.getCurrentUrl());
+        System.out.println("ActualUtl" + driver.getCurrentUrl());
+
+        WebElement Log1 = driver.findElementById("hamburger");
+        Log1.click();
+
+        WebElement buton4 = driver.findElementByCssSelector("body > div > div > div > div > main > section > div > div > div > form > footer > button");
+        buton4.click();
+        driver.getTitle();
+        System.out.println("Title is" + driver.getTitle());
+        WebElement link = driver.findElementByCssSelector("body");
+
+        System.out.println("Text is" + link.getText());
+        driver.get("https://www.airmoldova.md/about-company-ro/");
+        driver.getTitle();
+        String expectedPage1 = (" :https://www.airmoldova.md/about-company-ro/");
+        Assert.assertEquals(expectedPage1, driver.getCurrentUrl());
+        System.out.println("CurrentUtl:" + driver.getCurrentUrl());
+        System.out.println("ActualUtl" + driver.getCurrentUrl());
+
+        driver.get("https://www.airmoldova.md/index/login");
+        driver.quit();
+    }
+
+
+        @Test
+        public void invalid() {
+    System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+    ChromeDriver driver = new ChromeDriver();
+
+    driver.get("https://www.airmoldova.md/");
+    WebElement login = driver.findElementByXPath(".//a[text()='Login']");
+    login.click();
+    WebElement s = driver.findElementByXPath("//*[@id='login']");
+    s.click();
+    WebElement email = driver.findElementByXPath("//*[@id='emailLogin']");
+    email.sendKeys("Ecaterinah@mail.ru");
+    WebElement parola = driver.findElementByXPath("//*[@id='passwordLogin']");
+    parola.sendKeys("131619w");
+    WebElement buton = driver.findElementByXPath("//*[@id='login-box']/form/button");
+    buton.click();
+    driver.get("https://www.airmoldova.md/");
+    driver.get("https://www.airmoldova.md/index/login");
+    WebElement email1 = driver.findElementById("email");
+    email1.sendKeys("Ecaterinah@mail.ru");
+
+    WebElement parola1 = driver.findElementById("password");
+    parola1.sendKeys("131619w");
+WebElement buton11=driver.findElementByCssSelector("body > div > div > div > div > main > section > div > div > div > form > footer > button");
+buton11.click();
+    WebElement Log1= driver.findElementById("hamburger");
+    Log1.click();
+    if (parola1==parola  && email==email1){
+        System.out.println("true");}
+        else
+            System.out.println("false");
+        }
+
+
+
+
+    @Test
+    public void valid() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+        ChromeDriver driver = new ChromeDriver();
+
+        driver.get("https://www.airmoldova.md/");
+        WebElement login = driver.findElementByXPath(".//a[text()='Login']");
+        login.click();
+        WebElement s = driver.findElementByXPath("//*[@id='login']");
+        s.click();
+        WebElement email3 = driver.findElementByXPath("//*[@id='emailLogin']");
+        email3.sendKeys("Ecaterinah@mail.ru");
+        WebElement parola = driver.findElementByXPath("//*[@id='passwordLogin']");
+        parola.sendKeys("13119");
+        WebElement buton = driver.findElementByXPath("//*[@id='login-box']/form/button");
+        buton.click();
+        driver.get("https://www.airmoldova.md/");
+        driver.get("https://www.airmoldova.md/index/login");
+        WebElement email12 = driver.findElementById("email");
+        email12.sendKeys("Ecaterinah@mail.ru");
+
+        WebElement parol1 = driver.findElementById("password");
+        parol1.sendKeys("131619
+        ");
+        WebElement buton11 = driver.findElementByCssSelector("body > div > div > div > div > main > section > div > div > div > form > footer > button");
+        buton11.click();
+        WebElement Log1 = driver.findElementById("hamburger");
+        Log1.click();
+
+
+System.out.println(parola.equals(parol1));
+System.out.println(email3.equals(email12));
+    }
+    }
