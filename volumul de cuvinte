@@ -1,0 +1,60 @@
+package com.example.file;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import java.io.*;
+public class MainActivity extends AppCompatActivity {
+
+    public static void main(String[] args) {
+    int count=0;
+
+    BufferedReader br = null;
+    try {
+        File file = new File("text.txt");
+        if (!file.exists())
+            file.createNewFile();
+        PrintWriter pw = new PrintWriter(file);
+        pw.println("Hello world world");
+        pw.close();
+
+
+        br = new BufferedReader(new FileReader("text.txt"));
+        String line;
+        while ((line = br.readLine()) != null) {
+            System.out.println(line);
+
+
+            if (line.length() != 0) {
+
+
+             
+                for (int i = 0; i < line.length(); i++) {
+                    if (line.charAt(i) == ' ') {
+
+
+                        for (int j = 0; j < line.length(); j++) {
+                            if (line.charAt(j) == ' ') {
+
+
+                            }
+                            if (i !=j) {
+                                count++;
+
+                            }
+                        }
+                    }
+                }
+            }
+            System.out.print("Volumul de cuvinte" + count);
+        }
+
+
+    }
+    catch (IOException e) {
+        System.out.println("ERRor" + e);
+    }
+
+}
+
+}
+
